@@ -11,6 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./Developemnt/MainScreen/HomeScreen";
 import TheApp from "./PlaceHolders/theApp";
 import MainRouting from "./Developemnt/MainRouting";
+import GainRoute from "./Developemnt/GainedRoute";
 // import HomeRoute from "./Developemnt/MainScreen/HomeRoute";
 
 const Stack = createStackNavigator();
@@ -64,7 +65,7 @@ const App = () => {
   return (
     <AuthProvider>
       <NavigationContainer>
-        <WelcomeNavigation />
+        <GainRoute />
       </NavigationContainer>
     </AuthProvider>
   );

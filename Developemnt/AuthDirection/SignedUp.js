@@ -20,7 +20,7 @@ import { app } from "../../base";
 const signedUser = app.firestore().collection("user24");
 
 const Login_Screen = ({ navigation }) => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, current, signUp, signIn } = useContext(AuthContext);
   const [user, setUser] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,9 +31,9 @@ const Login_Screen = ({ navigation }) => {
       .auth()
       .createUserWithEmailAndPassword(email, password);
 
-    await app.auth().currentUser.updateProfile({
-      displayName: name,
-    });
+    // await app.auth().currentUser.updateProfile({
+    //   displayName: name,
+    // });
 
     await signedUser.doc(myUser.user.uid).set({
       email,
@@ -41,9 +41,9 @@ const Login_Screen = ({ navigation }) => {
       name,
       createAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
-    navigation.navigate("Home");
-    console.log(myUser.user.uid);
-    console.log("Sign Up");
+    // navigation.navigate("Home");
+    // console.log(myUser.user.uid);
+    // console.log("Sign Up");
   };
 
   return (
@@ -109,7 +109,7 @@ const Login_Screen = ({ navigation }) => {
               marginTop: 10,
             }}
             onPress={() => {
-              navigation.navigate("Sign in to your account");
+              RegisterUser();
             }}
           >
             <Text

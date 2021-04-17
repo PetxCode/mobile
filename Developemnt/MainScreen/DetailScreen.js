@@ -37,7 +37,11 @@ const DetailScreen = ({ route }) => {
             <Text style={styles.text2}>Book</Text>
           </TouchableOpacity>
         </View>
-        <Image source={require("../../assets/peter.jpg")} style={styles.img} />
+        <Image
+          source={require("../../assets/peter.jpg")}
+          source={{ uri: data.img }}
+          style={styles.img}
+        />
         <Text
           style={{
             marginLeft: 30,
@@ -105,6 +109,7 @@ const DetailScreen = ({ route }) => {
               post comment{" "}
             </Text>
           </TouchableOpacity>
+          <View style={{ marginTop: 40 }} />
         </View>
       </ScrollView>
     </SafeAreaView>

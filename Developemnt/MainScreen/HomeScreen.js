@@ -239,9 +239,11 @@ const HomeScreen = ({ onPress, title, navigation }) => {
                     }}
                   >
                     <Image
-                      source={require("../../assets/peter.jpg")}
+                      source={{
+                        uri: item.img,
+                      }}
                       style={styles.img2}
-                      resizeMode="contain"
+                      // resizeMode="contain"
                     />
                     <View
                       style={{

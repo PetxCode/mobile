@@ -26,6 +26,10 @@ const RecentlyBook = ({ title, img, onPress }) => {
           title="Sand studio"
           img={require("../../assets/ndidd.jpg")}
         />
+        <ImageProps
+          title="Sand studio"
+          img={require("../../assets/peter.jpg")}
+        />
         <ImageProps title="Camera" img={require("../../assets/3.jpg")} />
 
         <ImageProps

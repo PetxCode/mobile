@@ -8,20 +8,24 @@ import {
   Platform,
   SafeAreaView,
   TouchableOpacity,
+  Button,
 } from "react-native";
 // import { Button, MyButton } from "./MyButton";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import img1 from "../../assets/peter.jpg";
 import { TextInput } from "react-native-paper";
 
 import firebase from "firebase";
 import { app } from "../../base";
 import { AuthContext } from "../AuthPath/AuthState";
+import ImagePickerPost from "./PostImage";
+import PickerPick from "./NewImagePost";
 
 // import ImagePicker from "react-native-image-picker";
 const studio = app.firestore().collection("studio");
 const Post = () => {
   const { mgs, currentUser } = useContext(AuthContext);
-  const [imageSource, setImageSource] = useState(null);
+  // const [imageSource, setImageSource] = useState(null);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [cost, setCost] = useState("");
@@ -46,11 +50,15 @@ const Post = () => {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.response}>
-          <Text>Hello</Text>
-          <Text>{mgs}</Text>
+          <PickerPick />
         </View>
 
-        <View>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <TextInput
             placeholder="Item Name"
             style={styles.input}
@@ -75,30 +83,35 @@ const Post = () => {
             value={desc}
             onChangeText={setDesc}
           />
-        </View>
 
-        <TouchableOpacity
-          style={{
-            marginTop: 20,
-            backgroundColor: "red",
-            height: 40,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          onPress={() => {
-            pushOnline();
-            console.log("Push Online");
-          }}
-        >
-          <Text
+          <TouchableOpacity
             style={{
-              color: "white",
-              textTransform: "uppercase",
+              margin: 10,
+              backgroundColor: "red",
+              height: 50,
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: 5,
+              backgroundColor: "#651d32",
+              width: 350,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onPress={() => {
+              pushOnline();
+              console.log("Push Online");
             }}
           >
-            Push Online
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: "white",
+                textTransform: "uppercase",
+              }}
+            >
+              Push Online
+            </Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -125,7 +138,9 @@ const styles = StyleSheet.create({
   input: {
     marginHorizontal: 10,
     marginVertical: 5,
-    height: 40,
+    height: 50,
+    width: 350,
+
     fontSize: 13,
   },
 });

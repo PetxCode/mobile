@@ -14,10 +14,11 @@ import Profile from "./Posting/Profile";
 
 const Tab = createBottomTabNavigator();
 const MainRouting = ({ onPress }) => {
-  const { currentUser } = useContext(AuthContext);
+  const { current } = useContext(AuthContext);
 
   return (
     <Tab.Navigator
+      initialRouteName="Home Screen"
       tabBarOptions={{
         activeBackgroundColor: "white",
         activeTintColor: "#651E32",
@@ -43,7 +44,7 @@ const MainRouting = ({ onPress }) => {
           ),
         })}
       />
-      {currentUser ? (
+      {current ? (
         <Tab.Screen
           name="Make Post"
           component={Post}

@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import moment from "moment";
 
 import { app } from "../../base";
+import { ScrollView } from "react-native-gesture-handler";
 
 const ViewCreatedBy = ({ createdBy, createdAt, name, time }) => {
   const [data, setData] = useState([]);
@@ -22,33 +23,33 @@ const ViewCreatedBy = ({ createdBy, createdAt, name, time }) => {
     getData();
   }, []);
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        marginLeft: 20,
-        marginBottom: 5,
-        marginTop: 5,
+    <ScrollView>
+      <View
+        style={{
+          flexDirection: "row",
+          marginLeft: 20,
+          marginBottom: 25,
+          marginTop: 0,
+        }}
+      >
+        <Image source={{ uri: data && data.avatar }} style={styles.img} />
 
-        // backgroundColor: "lightgray",
-      }}
-    >
-      <Image source={data && data.avatar} style={styles.img} />
-
-      <View style={{ marginLeft: 10 }}>
-        <Text style={{ fontSize: 17, fontWeight: "bold" }}>
-          {data && data.name}
-        </Text>
-        <Text
-          style={{
-            fontWeight: "bold",
-            fontSize: 12,
-          }}
-        >
-          {moment(time).fromNow()}{" "}
-        </Text>
-        <Text>Item: {name} </Text>
+        <View style={{ marginLeft: 10 }}>
+          <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+            {data && data.name}
+          </Text>
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 12,
+            }}
+          >
+            {moment({ time }).fromNow()}{" "}
+          </Text>
+          <Text>Item: {name} </Text>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -64,11 +65,10 @@ const styles = StyleSheet.create({
   img: {
     width: 70,
     height: 70,
-    top: 40,
-
+    // top: 40,
     borderRadius: 100,
-    // border: "2px solid black",
-    // border: "2px solid tomato",
+    borderWidth: 5,
+    borderColor: "#651E32",
   },
   img2: {
     // flex: 1,

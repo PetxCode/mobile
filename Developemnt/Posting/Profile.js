@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
+import { AuthContext } from "../AuthPath/AuthState";
 
 const Profile = () => {
+  const { current } = useContext(AuthContext);
   return (
     <View
       style={{
